@@ -123,22 +123,22 @@ class GitLabProjectVariables(GitLabConnection):
         for var_key, var_value in variables.items():
             var_key = var_key.upper()
             
-            is_taken = self.check_if_var_is_taken(var_key)
+            is_taken = self._check_if_var_is_taken(var_key)
 
             if is_taken:
-                self.update_project_variable(var_key, var_value)
+                self._update_project_variable(var_key, var_value)
             else:
-                self.create_project_variable(var_key, var_value)
+                self._create_project_variable(var_key, var_value)
 
             print(f'Setting the variable "{var_key}".')
 
-    def check_if_var_is_taken(self, var_key: str):
+    def _check_if_var_is_taken(self, var_key: str):
         existing_variables = self.get_project_vars()
         existing_var_keys = [v['key'] for v in existing_variables]
         if var_key in existing_var_keys:
             return True
 
-    def create_project_variable(self, var_key: str, var_value: str):
+    def _create_project_variable(self, var_key: str, var_value: str):
         url = f'/projects/{self.project_num}/variables'
         var_key = var_key.upper()
 
@@ -153,7 +153,7 @@ class GitLabProjectVariables(GitLabConnection):
 
         return self._post(url, post_body)
 
-    def update_project_variable(self, var_key: str, var_value: str):
+    def _update_project_variable(self, var_key: str, var_value: str):
         var_key = var_key.upper()
         endpoint = f'/projects/{self.project_num}/variables/{var_key}'
 
