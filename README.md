@@ -2,7 +2,7 @@
 
 If you need to copy the variables of GitLab project or if you want to add variables to a new project you can do it with the code in this repository. 
 
-### How to use the script
+## How to use the script
 
 You only need to use the script `/src/set_project_variables.py`.
 
@@ -46,7 +46,7 @@ for project in projects:
 
 
 
-### How to extend the project with further classes
+## Contributing: How to extend the project with further classes
 
 Let's say you want to implement the feature to add tickets to an issue board. You would probably want to do that in `/src/GitLabConnection.py`. So far you will find two classes in this script:
 
@@ -57,6 +57,8 @@ So in order to extend the base class you just add a new class in `/src/GitLabCon
 
 I created a factory method to instantiate `GitLabProjectVariables` objects: __`GitLabConnection.create_project_variables_object()`__
 
+## Contact
+David Kuda (david.kuda [at] alexanderthamm.com)
 ## License
 
     Copyright 2020 Alexander Thamm GmbH
