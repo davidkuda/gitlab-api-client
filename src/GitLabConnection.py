@@ -102,36 +102,7 @@ class GitLabProjectVariables(GitLabConnection):
     def get_project_vars(self):
         endpoint = f'/projects/{self.project_num}/variables'
         return self._get(endpoint)
-
-    def create_project_variable(self, var_key: str, var_value: str):
-        url = f'/projects/{self.project_num}/variables'
-        var_key = var_key.upper()
-
-        post_body = {
-            "variable_type": "env_var",
-            "key": var_key,
-            "value": var_value,
-            "protected": True,
-            "masked": False,
-            "environment_scope": "*"
-        }
-
-        return self._post(url, post_body)
-
-    def update_project_variable(self, var_key: str, var_value: str):
-        var_key = var_key.upper()
-        endpoint = f'/projects/{self.project_num}/variables/{var_key}'
-
-        body = {
-            "variable_type": "env_var",
-            "key": var_key,
-            "value": var_value,
-            "protected": True,
-            "masked": False,
-            "environment_scope": "*"
-        }
-        return self._put(endpoint, body)
-
+    
     def set_project_variables(self, variables: dict):
         """Sets the variables of the project according to the passed arg.
         
@@ -166,6 +137,35 @@ class GitLabProjectVariables(GitLabConnection):
         existing_var_keys = [v['key'] for v in existing_variables]
         if var_key in existing_var_keys:
             return True
+
+    def create_project_variable(self, var_key: str, var_value: str):
+        url = f'/projects/{self.project_num}/variables'
+        var_key = var_key.upper()
+
+        post_body = {
+            "variable_type": "env_var",
+            "key": var_key,
+            "value": var_value,
+            "protected": True,
+            "masked": False,
+            "environment_scope": "*"
+        }
+
+        return self._post(url, post_body)
+
+    def update_project_variable(self, var_key: str, var_value: str):
+        var_key = var_key.upper()
+        endpoint = f'/projects/{self.project_num}/variables/{var_key}'
+
+        body = {
+            "variable_type": "env_var",
+            "key": var_key,
+            "value": var_value,
+            "protected": True,
+            "masked": False,
+            "environment_scope": "*"
+        }
+        return self._put(endpoint, body)
 
 
 if __name__ == '__main__':
