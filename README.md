@@ -61,7 +61,7 @@ I created a factory method to instantiate `GitLabProjectVariables` objects: __`G
 David Kuda (david.kuda [at] alexanderthamm.com)
 ## License
 
-    Copyright 2020 Alexander Thamm GmbH
+    Copyright 2021 Alexander Thamm GmbH
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
