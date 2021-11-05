@@ -17,10 +17,10 @@ mp4_from_bag = 466
 video_split_and_mask_creation = 473
 
 projects = [
-        metadata_extraction,
-        mp4_from_bag,
-        video_split_and_mask_creation    
-    ]    
+    metadata_extraction,
+    mp4_from_bag,
+    video_split_and_mask_creation    
+]
 ```
 
 __2. Define the variables that you want to set.__ Create a new dictionary with your variables. Example:
