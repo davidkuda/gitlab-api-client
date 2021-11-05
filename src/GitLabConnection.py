@@ -49,7 +49,7 @@ class GitLabConnection:
                              headers=self.headers,
                              json=body).json()
 
-    def put(self, api_endpoint: str, body):
+    def _put(self, api_endpoint: str, body):
         url = self.api_base_url + api_endpoint
         return requests.put(url=url,
                             headers=self.headers,
@@ -130,7 +130,7 @@ class GitLabProjectVariables(GitLabConnection):
             "masked": False,
             "environment_scope": "*"
         }
-        return self.put(endpoint, body)
+        return self._put(endpoint, body)
 
     def set_project_variables(self, variables: dict):
         """Sets the variables of the project according to the passed arg.
