@@ -86,7 +86,7 @@ class GitLabConnection:
         response = self._get(f'/search?scope=projects&search={name}')
         pprint(response)
 
-    def get_project_variables_object(self, project_num: int):
+    def create_project_variables_object(self, project_num: int):
         return GitLabProjectVariables(
             self.gitlab_access_token,
             self.api_base_url,

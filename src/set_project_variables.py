@@ -38,7 +38,7 @@ def main():
     jupyter_images = 578
 
     jupyter_images_vars_object = gitlab_connection \
-        .get_project_variables_object(jupyter_images)
+        .create_project_variables_object(jupyter_images)
     jupyter_images_vars = jupyter_images_vars_object.get_project_vars()
     
     vars = transform_vars_data_structure(jupyter_images_vars)
@@ -57,7 +57,7 @@ def main():
     # Set the variables for each project
     for project in projects:
         project_variables = gitlab_connection \
-            .get_project_variables_object(project)
+            .create_project_variables_object(project)
         project_variables.set_project_variables(vars)
     
 
