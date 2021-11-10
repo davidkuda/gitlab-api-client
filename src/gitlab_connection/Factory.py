@@ -1,5 +1,6 @@
 from .GitLabConnection import GitLabConnection
 from .GitLabProjectVariables import GitLabProjectVariables
+from gitlab_connection.ProjectFinder import ProjectFinder
 
 
 class ConnectionCreator(GitLabConnection):
@@ -10,5 +11,9 @@ class ConnectionCreator(GitLabConnection):
         return GitLabProjectVariables(
             self.gitlab_access_token,
             self.api_base_url,
-            project_num
-        )
+            project_num)
+
+    def create_project_finder(self):
+        return ProjectFinder(
+            self.gitlab_access_token,
+            self.api_base_url)
