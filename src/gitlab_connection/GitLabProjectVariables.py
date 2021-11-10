@@ -75,7 +75,7 @@ class GitLabProjectVariables(GitLabConnection):
         if var_key in existing_var_keys:
             return True
 
-    def _create_project_variable(self, var_key: str, var_value: str):
+    def _create_project_variable_with_defaults(self, var_key: str, var_value: str):
         url = f'/projects/{self.project_num}/variables'
         var_key = var_key.upper()
 
@@ -88,6 +88,10 @@ class GitLabProjectVariables(GitLabConnection):
             "environment_scope": "*"
         }
 
+        return self._post(url, post_body)
+
+    def _create_project_variable(self, post_body: dict):
+        url = f'/projects/{self.project_num}/variables'
         return self._post(url, post_body)
 
     def _update_project_variable(self, var_key: str, var_value: str):
