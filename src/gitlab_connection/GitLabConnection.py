@@ -55,6 +55,12 @@ class GitLabConnection:
                             headers=self.headers,
                             json=body).json()
 
+    def _request(self, method: str, api_endpoint: str):
+        url = self.api_base_url + api_endpoint
+        return requests.request(method=method,
+                                url=url,
+                                headers=self.headers).status_code
+
     def list_groups(self):
         groups = self._get('/groups')
         group_names_and_id = []
