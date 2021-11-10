@@ -67,7 +67,7 @@ class GitLabProjectVariables(GitLabConnection):
             if is_taken:
                 self._update_project_variable(var_key, var_value)
             else:
-                self._create_project_variable(var_key, var_value)
+                self._create_project_variable_with_defaults(var_key, var_value)
 
             print(f'Setting the variable "{var_key}".')
 
