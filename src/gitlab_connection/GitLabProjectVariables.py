@@ -22,6 +22,23 @@ class GitLabProjectVariables(GitLabConnection):
     def get_project_vars(self):
         endpoint = f'/projects/{self.project_num}/variables'
         return self._get(endpoint)
+
+    def delete_all_vars(self):
+        vars = self.get_project_vars()
+
+        if len(vars) == 0:
+            print(f'No vars exist in this project (project num: {self.project_num})')
+            return
+
+        for var in vars:
+            var_key = print(var['key'])
+            print(f'Deleting {var_key}')
+            r = self._delete_var(var['key'])
+            print(r)
+
+    def _delete_var(self, var_name: str):
+        url = f'/projects/{self.project_num}/variables/{var_name}'
+        return self._request('DELETE', url)
     
     def set_project_variables(self, variables: dict):
         """Sets the variables of the project according to the passed arg.
