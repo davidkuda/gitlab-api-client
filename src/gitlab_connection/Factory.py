@@ -1,3 +1,6 @@
+# Author: David Kuda
+# Creation Date: 10. November 2021
+
 from .GitLabConnection import GitLabConnection
 from .GitLabProjectVariables import GitLabProjectVariables
 from gitlab_connection.ProjectFinder import ProjectFinder
