@@ -11,6 +11,8 @@
 # https://docs.gitlab.com/ee/api/project_level_variables.html
 #
 
+from typing import List
+
 from .GitLabConnection import GitLabConnection
 
 
@@ -19,7 +21,7 @@ class GitLabProjectVariables(GitLabConnection):
         super().__init__(gitlab_access_token, api_base_url)
         self.project_num = project_num
 
-    def get_project_vars(self):
+    def get_project_vars(self) -> List[dict]:
         endpoint = f'/projects/{self.project_num}/variables'
         return self._get(endpoint)
 
