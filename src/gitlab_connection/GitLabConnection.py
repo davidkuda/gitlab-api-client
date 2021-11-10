@@ -1,15 +1,5 @@
 # Author: David Kuda
 # Creation Date: 1. October 2021
-#
-# Description:
-#
-# Interacts with the GitLab api to create new variables
-# that can be used in gitlab ci.
-#
-# Documentation:
-#
-# https://docs.gitlab.com/ee/api/project_level_variables.html
-#
 
 from pprint import pprint
 
