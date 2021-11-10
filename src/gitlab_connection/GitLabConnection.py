@@ -44,7 +44,6 @@ class GitLabConnection:
 
     def _post(self, api_endpoint: str, body):
         url = self.api_base_url + api_endpoint
-        print(url)
         return requests.post(url=url,
                              headers=self.headers,
                              json=body).json()
