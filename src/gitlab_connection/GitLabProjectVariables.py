@@ -69,6 +69,11 @@ class GitLabProjectVariables(GitLabConnection):
 
             print(f'Setting the variable "{var_key}".')
 
+    def copy_vars_from_other_project(self, vars: List[dict]):
+        for var in vars:
+            print(f'Copying var "{var["key"]}"')
+            self._create_project_variable(var)
+
     def _check_if_var_is_taken(self, var_key: str):
         existing_variables = self.get_project_vars()
         existing_var_keys = [v['key'] for v in existing_variables]
