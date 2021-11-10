@@ -5,11 +5,6 @@
 #
 # Interacts with the GitLab api to create new variables
 # that can be used in gitlab ci.
-#
-# Documentation:
-#
-# https://docs.gitlab.com/ee/api/project_level_variables.html
-#
 
 import os
 from pprint import pprint
