@@ -3,7 +3,8 @@
 
 from .gitlab_connection import GitLabConnection
 from .gitlab_project import GitLabProject
-from gitlab_connection.project_finder import ProjectFinder
+from .gitlab_group import GitLabGroup
+from .project_finder import ProjectFinder
 
 
 class ConnectionCreator(GitLabConnection):
@@ -14,7 +15,13 @@ class ConnectionCreator(GitLabConnection):
         return GitLabProject(
             self.gitlab_access_token,
             self.api_base_url,
-            project_num)
+            project_id)
+    
+    def create_group_connection(self, group_id: int):
+        return GitLabGroup(
+            self.gitlab_access_token,
+            self.api_base_url,
+            group_id)
 
     def create_project_finder(self):
         return ProjectFinder(
