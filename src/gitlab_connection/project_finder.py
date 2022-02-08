@@ -29,8 +29,6 @@ class ProjectFinder(GitLabConnection):
         }
         groups = self._get('/groups', params)
         group_names_and_id = []
-        pprint(groups[0].keys())
-        pprint(groups[3])
         for group in groups:
             group_names_and_id.append({
                     "group_id": group.get('id'),
