@@ -13,10 +13,10 @@
 
 from typing import List
 
-from .GitLabConnection import GitLabConnection
+from .gitlab_connection import GitLabConnection
 
 
-class GitLabProjectVariables(GitLabConnection):
+class GitLabProject(GitLabConnection):
     def __init__(self, gitlab_access_token, api_base_url, project_num) -> None:
         super().__init__(gitlab_access_token, api_base_url)
         self.project_num = project_num

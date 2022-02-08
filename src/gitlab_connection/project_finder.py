@@ -2,8 +2,9 @@
 # Creation Date: 10. November 2021
 
 from pprint import pprint
+import json
 
-from .GitLabConnection import GitLabConnection
+from .gitlab_connection import GitLabConnection
 
 
 class ProjectFinder(GitLabConnection):
@@ -39,4 +40,5 @@ class ProjectFinder(GitLabConnection):
 
     def search_project(self, name: str):
         response = self._get(f'/search?scope=projects&search={name}')
-        pprint(response)
+        print(json.dumps(response, indent=2))
+        return response

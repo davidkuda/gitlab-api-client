@@ -4,8 +4,7 @@
 import os
 from pprint import pprint
 
-from gitlab_connection.Factory import ConnectionCreator
-from gitlab_connection.utils import transform_vars_data_structure
+from gitlab_connection.connection_creator import ConnectionCreator
 
 
 def main():

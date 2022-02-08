@@ -15,13 +15,16 @@ class GitLabConnection:
         self.headers = {
             'PRIVATE-TOKEN': gitlab_access_token
         }
-        self.check_authentication()
+        self._check_authentication()
 
-    def check_authentication(self):
+    def _check_authentication(self):
         response = self._get('/version')
-        if response.get('error') == 'invalid_token':
+        if (
+            response.get('error') == 'invalid_token'
+            or response.get('message') == '401 Unauthorized'
+        ):
             print(response.get('error_description'))
-            raise UnsuccessfulAuthentication(response.get('error_description'))
+            raise UnsuccessfulAuthentication("Failed Authentication to GitLab")
         else:
             return True
 
