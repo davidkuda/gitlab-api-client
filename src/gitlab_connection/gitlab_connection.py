@@ -28,12 +28,12 @@ class GitLabConnection:
         else:
             return True
 
-    def _get(self, api_endpoint: str):
+    def _get(self, api_endpoint: str, params=None):
         # Two examples:
         # projects = gitlab_client.get('/projects')
         # groups = gitlab_client.get('/groups')
         url = self.api_base_url + api_endpoint
-        return requests.get(url=url, headers=self.headers).json()
+        return requests.get(url=url, params=params, headers=self.headers).json()
 
     def _post(self, api_endpoint: str, body):
         url = self.api_base_url + api_endpoint
